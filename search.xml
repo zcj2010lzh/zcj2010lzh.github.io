@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>test</title>
+    <url>/2019/12/09/test/</url>
+    <content><![CDATA[<p>asdasdasdasd</p>
+<a id="more"></a>
+<p><img src="./yibo.jpg" alt="李子"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>markdown基本语法</title>
     <url>/2019/12/08/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>#一级标题<br><strong>加粗</strong><br><em>斜体</em><br><strong><em>斜体加粗</em></strong><br><del>加删除线</del></p>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p><strong>加粗</strong><br><em>斜体</em><br><strong><em>斜体加粗</em></strong><br><del>加删除线</del></p>
 <blockquote>
 <p>引用的内容，可以加多个<br>—分割线 三个或者三个以上的-<br>![图片alt](图片地址 ‘’图片title’’ )  alt为在图片下面的解释 title为鼠标移到图片上显示的内容<br><a href="超链接地址" title="超链接title">超链接名</a>或用<a href=""  target="_blank">百度</a><br>列表内容 - + * 与文字要有一个空格<br>有序列标 内容前数字加点<br>列表嵌套上一级和下一级敲三个空格<br>表格<br>表头|表头|表头<br>—|:–:|—:<br>内容|内容|内容<br>内容|内容|内容<br>第二行分割表头和内容。</p>
 </blockquote>
@@ -17,7 +25,7 @@
   <entry>
     <title>李子</title>
     <url>/2019/12/07/%E6%9D%8E%E5%AD%90/</url>
-    <content><![CDATA[<p><a href="https://zcj2010lzh.github.io/themes/next/source/images/yuantianai.png" target="_blank" rel="noopener">园田小姐姐</a></p>
+    <content><![CDATA[<p><img src="/images/yuantianai.png" alt="园田小姐姐"></p>
 ]]></content>
   </entry>
 </search>
