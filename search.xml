@@ -14,6 +14,9 @@
 <p>cp<br>-a ：将文件的特性一起复制<br>-p ：连同文件的属性一起复制，而非使用默认方式，与-a相似，常用于备份<br>-i ：若目标文件已经存在时，在覆盖时会先询问操作的进行<br>-r ：递归持续复制，用于目录的复制行为<br>-u ：目标文件与源文件有差异时才会复制  </p>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
       <tags>
         <tag>日常学习</tag>
       </tags>
@@ -31,6 +34,9 @@
 <li>右边加：表示文字居右<br>注：原生的语法两边都要用 | 包起来。此处省略</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
       <tags>
         <tag>日常学习</tag>
       </tags>
@@ -40,5 +46,11 @@
     <url>/2019/12/07/%E6%9D%8E%E5%AD%90/</url>
     <content><![CDATA[<p><img src="/images/yuantianai.png" alt="园田小姐姐"></p>
 ]]></content>
+      <categories>
+        <category>园田</category>
+      </categories>
+      <tags>
+        <tag>图片</tag>
+      </tags>
   </entry>
 </search>
