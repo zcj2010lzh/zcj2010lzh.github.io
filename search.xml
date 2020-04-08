@@ -1,19 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>mkhtmltopdf感想</title>
+    <url>/2020/04/08/mkhtmltopdf%E6%84%9F%E6%83%B3/</url>
+    <content><![CDATA[<h1 id="mkhtmltopdf感想"><a href="#mkhtmltopdf感想" class="headerlink" title="mkhtmltopdf感想"></a>mkhtmltopdf感想</h1><a id="more"></a>
+<blockquote>
+</blockquote>
+<blockquote>
+<p>1 ####安装mkhtmltopdf<br>    1. pip install mkhtmltopdf<br>        apt-get  install mkhtmltopdf</p>
+</blockquote>
+<blockquote>
+<p>2 ####配置pdfkit<br>    1. config = pdfkit.configuration(wkhtmltopdf=r”/usr/bin”) =&gt;&gt;Pdfkit OSError: No wkhtmltopdf executable found<br>       options={<br>            “encoding”:”UTF-8”,<br>        }</p>
+</blockquote>
+<blockquote>
+<p>3 ####将目标文件移动到/media/summary/pdf下<br>    1. import shutil<br>       impoet media<br>       shutil.move(summary.title+’.pdf’, ‘media/summary/pdf/‘+summary.title+’.pdf’)<br>       summary.file = ‘media/summary/pdf/‘+summary.title+’.pdf’</p>
+</blockquote>
+<p>4 #### 解决Pdfkit OSError:Could not connect to display<br>    1.     apt-get install xvfb<br>           import subprocess<br>        import sys<br>        from pdfkit import PDFKit<br>        try:<br>            # Python 2.x and 3.x support for checking string types<br>            assert basestring<br>        except NameError:<br>            basestring = str<br>        class UbuntuConfiguration(object):<br>            def <strong>init</strong>(self, wkhtmltopdf=’’, xvfb=’’, meta_tag_prefix=’pdfkit-‘):<br>                self.meta_tag_prefix = meta_tag_prefix<br>                self.wkhtmltopdf = wkhtmltopdf<br>                self.xvfb = xvfb<br>                if not self.wkhtmltopdf:<br>                    if sys.platform == ‘win32’:<br>                        self.wkhtmltopdf = subprocess.Popen(<br>                            [‘where’, ‘wkhtmltopdf’], stdout=subprocess.PIPE).communicate()[0].strip()<br>                    else:<br>                        self.wkhtmltopdf = subprocess.Popen(<br>                            [‘which’, ‘wkhtmltopdf’], stdout=subprocess.PIPE).communicate()[0].strip()<br>                if not xvfb:<br>                    # 只针对ubuntu 最简单的解决方案，安装wkhtmltopdf 不足以解决问题时，需要安装xvfb-run来执行<br>                    if sys.platform != ‘win32’:<br>                        self.xvfb = subprocess.Popen(<br>                            [‘which’, ‘xvfb-run’], stdout=subprocess.PIPE).communicate()[0].strip()<br>                        # 确定是否已经安装<br>                        try:<br>                            with open(self.xvfb) as f:<br>                                pass<br>                        except IOError:<br>                            raise IOError(‘No xvfb executable found: “%s”\n’ % self.xvfb)<br>                try:<br>                    with open(self.wkhtmltopdf) as f:<br>                        pass<br>                except IOError:<br>                    raise IOError(‘No wkhtmltopdf executable found: “%s”\n’<br>                                  ‘If this file exists please check that this process can ‘<br>                                  ‘read it. Otherwise please install wkhtmltopdf - ‘<br>                                  ‘<a href="https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf&#39;" target="_blank" rel="noopener">https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf&#39;</a> % self.wkhtmltopdf)<br>        class UbuntuPDFKit(PDFKit):<br>            def <strong>init</strong>(self, url_or_file, type_, options=None, toc=None, cover=None,<br>                         css=None, cover_first=False):<br>                configuration = UbuntuConfiguration()<br>                super(UbuntuPDFKit, self).<strong>init</strong>(url_or_file, type_, options, toc=toc, cover=cover, css=css,<br>                                                   cover_first=cover_first, configuration=configuration)<br>                self.xvfb = self.configuration.xvfb<br>            def _command(self, path=None):<br>                “””<br>                Generator of all command parts<br>                “””<br>                if self.css:<br>                    self._prepend_css(self.css)<br>                yield self.xvfb</p>
+<pre><code>        yield self.wkhtmltopdf
+        for argpart in self._genargs(self.options):
+            if argpart:
+                yield argpart
+
+        if self.cover and self.cover_first:
+            yield &apos;cover&apos;
+            yield self.cover
+        if self.toc:
+            yield &apos;toc&apos;
+            for argpart in self._genargs(self.toc):
+                if argpart:
+                    yield argpart
+
+        if self.cover and not self.cover_first:
+            yield &apos;cover&apos;
+            yield self.cover
+        # If the source is a string then we will pipe it into wkhtmltopdf
+        # If the source is file-like then we will read from it and pipe it in
+        if self.source.isString() or self.source.isFileObj():
+            yield &apos;-&apos;
+        else:
+            if isinstance(self.source.source, basestring):
+                yield self.source.to_s()
+            else:
+                for s in self.source.source:
+                    yield s
+        # If output_path evaluates to False append &apos;-&apos; to end of args
+        # and wkhtmltopdf will pass generated PDF to stdout
+        if path:
+            yield path
+        else:
+            yield &apos;-&apos;
+def xvfb_from_file(input, output_path, options=None, toc=None, cover=None, css=None, cover_first=False):
+    r = UbuntuPDFKit(input, &apos;file&apos;, options=options, toc=toc, cover=cover, css=css, cover_first=cover_first)
+    return r.to_pdf(output_path)
+————————————————
+版权声明：本文为CSDN博主「战渣渣」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/mx472756841/java/article/details/83268921</code></pre><blockquote>
+<p>5 解决中文乱码<br>    1. 安装微软字体 .ttc或.ttf<br>       到/usr/share/fonts下mkdir Winfonts在将字体复制过来<br>       chmod 664 <em>.ttc或</em>.ttf<br>       mkfontscale （创建雅黑字体的fonts.scale文件，它用来控制字体旋转缩放）<br>       sudo mkfontsdir （创建雅黑字体的fonts.dir文件，它用来控制字体粗斜体产生）<br>       sudo fc-cache -fv（建立字体缓存信息，也就是让系统认识雅黑)</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>日常学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL须知</title>
     <url>/2020/02/29/mysql%E9%A1%BB%E7%9F%A5/</url>
     <content><![CDATA[<h1 id="MySQL须知"><a href="#MySQL须知" class="headerlink" title="MySQL须知"></a>MySQL须知</h1><a id="more"></a>
 <blockquote>
 </blockquote>
 <blockquote>
-<p>####1 修改密码<br>    1. set password for xxx@host=”xxx”<br>     grant all PRIVILEGES on student.* to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);</p>
+<p>####1 修改密码<br>    1. set password for xxx@host=”xxx”<br>     grant all PRIVILEGES on student.* to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);<br>     在/etc/mysql/mysqld改变bind-address<br>      在/etc/mysql/debian.cnf下查看root密码</p>
 </blockquote>
 <blockquote>
 <p>####2 MySQL-font与MySQL—client版本不匹配(错误代码#1251)<br>    2. ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘password’ PASSWORD EXPIRE NEVER;<br>    ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘你的密码’;<br>    FLUSH PRIVILEGES;</p>
 </blockquote>
 <blockquote>
-<p>####3 远程访问在阿里云的MySQL-server<br>    1. 配置安全组规则(port:3306)<br>    2. <a href="https://www.cnblogs.com/patrickding/p/6435459.html" target="_blank" rel="noopener">开启Mysql 3306端口远程访问</a><br>    在MySQL的MySQL数据库中执行grant all PRIVILEGES on student.<em>(数据库和表(.</em>)) to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);<br>####4 其他<br>    1. Windows初始化 mysqld –initialize –console;<br>    Windows启动/停止MySQL-service net start(stop) mysql ;<br>    复制表 insert into database1(key)  from database2;<br>    查看key desc table;</p>
+<p>####3 远程访问在阿里云的MySQL-server<br>    1. 配置安全组规则(port:3306)<br>    2. <a href="https://www.cnblogs.com/patrickding/p/6435459.html" target="_blank" rel="noopener">开启Mysql 3306端口远程访问</a><br>    在MySQL的MySQL数据库中执行grant all PRIVILEGES on student.<em>(数据库和表(.</em>)) to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);<br>####4 其他<br>    1. Windows 初始化 mysqld –initialize –console;<br>    Windows启动/停止MySQL-service net start(stop) mysql ;<br>    复制表 insert into database1(key)  from database2;<br>    查看key desc table;<br>    2.创建用户<br>     create user ‘新用户名‘@’localhost’ identified by ‘密码’;<br>    //允许所有ip连接（用通配符%表示）<br>    create user ‘新用户名‘@’%’ identified by ‘密码’;<br>    限制 limit<br>    ALTER TABLE <code>table_name</code> MODIFY COLUMN <code>id</code> int NOT NULL AUTO_INCREMENT,ADD PRIMARY KEY(id);</p>
 </blockquote>
 ]]></content>
       <tags>
@@ -25,7 +87,7 @@
     <url>/2019/12/21/linux%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<h1 id="Linux部署Django项目"><a href="#Linux部署Django项目" class="headerlink" title="Linux部署Django项目"></a>Linux部署Django项目</h1><a id="more"></a>
 <blockquote>
-<p>####安装python和克隆项目<br>  安装python3 -&gt; apt-get install python3.6(更新apt-get或升级)<br>  安装pip3.6  -&gt; apt-get install python3-pip 然后 pip install –upgrade pip<br>  安装虚拟环境和创建虚拟环境 -&gt; pip install virtualenv  | virtualenv xxx_env<br>  启动虚拟环境 -&gt; source xxx_env/bin/activate(deactivate) | 以下步骤在virtualenv下完成<br>  安装虚拟环境中的配置 -&gt; pip install django==2.2.7(版本) pip install djangorestframework(一个所需框架)<br>  克隆项目 -&gt; git clone <a href="https://github.com/xxx/xxx(克隆到xxx_env下)" target="_blank" rel="noopener">https://github.com/xxx/xxx(克隆到xxx_env下)</a></p>
+<p>####安装python和克隆项目<br>  安装python3 -&gt; apt-get install python3.6(更新apt-get或升级)<br>  安装pip3.6  -&gt; apt-get install python3-pip 然后 pip install –upgrade pip<br>  安装虚拟环境和创建虚拟环境 -&gt; pip install virtualenv  | virtualenv xxx_env//应该需要在普通用户下完成<br>  启动虚拟环境 -&gt; source xxx_env/bin/activate(deactivate) | 以下步骤在virtualenv下完成<br>  安装虚拟环境中的配置 -&gt; pip install django==2.2.7(版本) pip install djangorestframework(一个所需框架)<br>  克隆项目 -&gt; git clone <a href="https://github.com/xxx/xxx(克隆到xxx_env下)" target="_blank" rel="noopener">https://github.com/xxx/xxx(克隆到xxx_env下)</a></p>
 </blockquote>
 <blockquote>
 <p>####安装uwsgi和配置<br>  安装 pip install uwsgi(或先apt-get install libpython3.6-dev)<br>  配置 在克隆的项目下新建一个uwsgi文件(与nginx建立联系)touch xxx.xml<br>     <uwsgi><br>     <socket>127.0.0.1:8997</socket><!-- 内部端口，自定义 --><br>     <chdir>/data/wwwroot/mysite/</chdir><!-- 项目路径 --><br>     <module>mysite.wsgi</module><br>     <processes>4</processes> <!-- 进程数 --><br>     <daemonize>uwsgi.log</daemonize><!-- 日志文件 --><br>     </uwsgi><br>  启动项目中的uwsgi(uwsgi -x xxx.xml)(可先杀死uwsgi)</p>
@@ -67,7 +129,8 @@ alias /data/wwwroot/mysite/static/; #静态资源路径
   <entry>
     <title>markdown基本语法</title>
     <url>/2019/12/08/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<a id="more"></a>
+    <content><![CDATA[<p> markdown基本语法</p>
+<a id="more"></a>
 <blockquote>
 </blockquote>
 <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p><strong>加粗</strong><br><em>斜体</em><br><strong><em>斜体加粗</em></strong><br><del>加删除线</del></p>
@@ -166,7 +229,8 @@ alias /data/wwwroot/mysite/static/; #静态资源路径
   <entry>
     <title>李子</title>
     <url>/2019/12/07/%E6%9D%8E%E5%AD%90/</url>
-    <content><![CDATA[<a id="more"></a>
+    <content><![CDATA[<p>李子</p>
+<a id="more"></a>
 <blockquote>
 </blockquote>
 <p><img src="/images/yuantianai.png" alt="alt 园田小姐姐"></p>

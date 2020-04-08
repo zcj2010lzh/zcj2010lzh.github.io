@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="小仙子">
 <meta property="og:description" content="Linux部署Django项目">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-05T11:30:57.245Z">
+<meta property="og:updated_time" content="2020-03-13T11:25:19.785Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -348,7 +348,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  287 字
+                  299 字
                 </span>
               
 
@@ -387,7 +387,7 @@
       
         <h1 id="Linux部署Django项目"><a href="#Linux部署Django项目" class="headerlink" title="Linux部署Django项目"></a>Linux部署Django项目</h1><a id="more"></a>
 <blockquote>
-<p>####安装python和克隆项目<br>  安装python3 -&gt; apt-get install python3.6(更新apt-get或升级)<br>  安装pip3.6  -&gt; apt-get install python3-pip 然后 pip install –upgrade pip<br>  安装虚拟环境和创建虚拟环境 -&gt; pip install virtualenv  | virtualenv xxx_env<br>  启动虚拟环境 -&gt; source xxx_env/bin/activate(deactivate) | 以下步骤在virtualenv下完成<br>  安装虚拟环境中的配置 -&gt; pip install django==2.2.7(版本) pip install djangorestframework(一个所需框架)<br>  克隆项目 -&gt; git clone <a href="https://github.com/xxx/xxx(克隆到xxx_env下)" target="_blank" rel="noopener">https://github.com/xxx/xxx(克隆到xxx_env下)</a></p>
+<p>####安装python和克隆项目<br>  安装python3 -&gt; apt-get install python3.6(更新apt-get或升级)<br>  安装pip3.6  -&gt; apt-get install python3-pip 然后 pip install –upgrade pip<br>  安装虚拟环境和创建虚拟环境 -&gt; pip install virtualenv  | virtualenv xxx_env//应该需要在普通用户下完成<br>  启动虚拟环境 -&gt; source xxx_env/bin/activate(deactivate) | 以下步骤在virtualenv下完成<br>  安装虚拟环境中的配置 -&gt; pip install django==2.2.7(版本) pip install djangorestframework(一个所需框架)<br>  克隆项目 -&gt; git clone <a href="https://github.com/xxx/xxx(克隆到xxx_env下)" target="_blank" rel="noopener">https://github.com/xxx/xxx(克隆到xxx_env下)</a></p>
 </blockquote>
 <blockquote>
 <p>####安装uwsgi和配置<br>  安装 pip install uwsgi(或先apt-get install libpython3.6-dev)<br>  配置 在克隆的项目下新建一个uwsgi文件(与nginx建立联系)touch xxx.xml<br>     <uwsgi><br>     <socket>127.0.0.1:8997</socket><!-- 内部端口，自定义 --><br>     <chdir>/data/wwwroot/mysite/</chdir><!-- 项目路径 --><br>     <module>mysite.wsgi</module><br>     <processes>4</processes> <!-- 进程数 --><br>     <daemonize>uwsgi.log</daemonize><!-- 日志文件 --><br>     </uwsgi><br>  启动项目中的uwsgi(uwsgi -x xxx.xml)(可先杀死uwsgi)</p>
@@ -523,7 +523,7 @@ alias /data/wwwroot/mysite/static/; #静态资源路径
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

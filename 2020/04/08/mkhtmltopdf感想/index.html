@@ -86,15 +86,15 @@
 
 
 
-<meta name="description" content="Linux常用命令1">
+<meta name="description" content="mkhtmltopdf感想">
 <meta name="keywords" content="日常学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux常用命令1">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;10&#x2F;Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A41&#x2F;index.html">
+<meta property="og:title" content="mkhtmltopdf感想">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;08&#x2F;mkhtmltopdf%E6%84%9F%E6%83%B3&#x2F;index.html">
 <meta property="og:site_name" content="小仙子">
-<meta property="og:description" content="Linux常用命令1">
+<meta property="og:description" content="mkhtmltopdf感想">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-05T11:28:11.915Z">
+<meta property="og:updated_time" content="2020-04-08T03:08:40.592Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/10/Linux常用命令1/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/08/mkhtmltopdf感想/"/>
 
 
 
 
 
-  <title>Linux常用命令1 | 小仙子</title>
+  <title>mkhtmltopdf感想 | 小仙子</title>
   
 
 
@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A41/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/08/mkhtmltopdf%E6%84%9F%E6%83%B3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李子">
@@ -299,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux常用命令1</h1>
+          <h1 class="post-title" itemprop="name headline">mkhtmltopdf感想</h1>
         
 
         <div class="post-meta">
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T15:10:36+08:00">
-                2019-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T10:42:52+08:00">
+                2020-04-08
               </time>
             
 
@@ -321,28 +321,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index">
-                    <span itemprop="name">技巧</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -370,7 +348,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  339 字
+                  701 字
                 </span>
               
 
@@ -386,7 +364,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -407,15 +385,59 @@
       
 
       
-        <h1 id="Linux常用命令1"><a href="#Linux常用命令1" class="headerlink" title="Linux常用命令1"></a>Linux常用命令1</h1><a id="more"></a>
+        <h1 id="mkhtmltopdf感想"><a href="#mkhtmltopdf感想" class="headerlink" title="mkhtmltopdf感想"></a>mkhtmltopdf感想</h1><a id="more"></a>
 <blockquote>
-<p>####find<br>    1. find<br>    find [mtime] n(与n天有关) [user][group][uid][gid] name(与name有关的组和用户) [newer] n  比n更新的文件<br>    与文件权限及名称有关的参数：<br>    -name filename ：找出文件名为filename的文件<br>    -size [+-]SIZE ：找出比SIZE还要大（+）或小（-）的文件<br>    -tpye TYPE ：查找文件的类型为TYPE的文件，TYPE的值主要有：一般文件（f)、设备文件（b、c）、<br>    目录（d）、连接文件（l）、socket（s）、FIFO管道文件（p）；<br>    -perm mode ：查找文件权限刚好等于mode的文件，mode用数字表示，如0755；<br>    -perm -mode ：查找文件权限必须要全部包括mode权限的文件，mode用数字表示<br>    -perm +mode ：查找文件权限包含任一mode的权限的文件，mode用数字表示</p>
 </blockquote>
 <blockquote>
-<p>####ls<br>    1. ls [l] 以列表显示 [r]将排序结果反向  [a A]输出隐藏目录或文件 [t]以时间排序 [–color=?]与颜色相关  </p>
+<p>1 ####安装mkhtmltopdf<br>    1. pip install mkhtmltopdf<br>        apt-get  install mkhtmltopdf</p>
 </blockquote>
 <blockquote>
-<p>####cp<br>    -a ：将文件的特性一起复制<br>    -p ：连同文件的属性一起复制，而非使用默认方式，与-a相似，常用于备份<br>    -i ：若目标文件已经存在时，在覆盖时会先询问操作的进行<br>    -r ：递归持续复制，用于目录的复制行为<br>    -u ：目标文件与源文件有差异时才会复制</p>
+<p>2 ####配置pdfkit<br>    1. config = pdfkit.configuration(wkhtmltopdf=r”/usr/bin”) =&gt;&gt;Pdfkit OSError: No wkhtmltopdf executable found<br>       options={<br>            “encoding”:”UTF-8”,<br>        }</p>
+</blockquote>
+<blockquote>
+<p>3 ####将目标文件移动到/media/summary/pdf下<br>    1. import shutil<br>       impoet media<br>       shutil.move(summary.title+’.pdf’, ‘media/summary/pdf/‘+summary.title+’.pdf’)<br>       summary.file = ‘media/summary/pdf/‘+summary.title+’.pdf’</p>
+</blockquote>
+<p>4 #### 解决Pdfkit OSError:Could not connect to display<br>    1.     apt-get install xvfb<br>           import subprocess<br>        import sys<br>        from pdfkit import PDFKit<br>        try:<br>            # Python 2.x and 3.x support for checking string types<br>            assert basestring<br>        except NameError:<br>            basestring = str<br>        class UbuntuConfiguration(object):<br>            def <strong>init</strong>(self, wkhtmltopdf=’’, xvfb=’’, meta_tag_prefix=’pdfkit-‘):<br>                self.meta_tag_prefix = meta_tag_prefix<br>                self.wkhtmltopdf = wkhtmltopdf<br>                self.xvfb = xvfb<br>                if not self.wkhtmltopdf:<br>                    if sys.platform == ‘win32’:<br>                        self.wkhtmltopdf = subprocess.Popen(<br>                            [‘where’, ‘wkhtmltopdf’], stdout=subprocess.PIPE).communicate()[0].strip()<br>                    else:<br>                        self.wkhtmltopdf = subprocess.Popen(<br>                            [‘which’, ‘wkhtmltopdf’], stdout=subprocess.PIPE).communicate()[0].strip()<br>                if not xvfb:<br>                    # 只针对ubuntu 最简单的解决方案，安装wkhtmltopdf 不足以解决问题时，需要安装xvfb-run来执行<br>                    if sys.platform != ‘win32’:<br>                        self.xvfb = subprocess.Popen(<br>                            [‘which’, ‘xvfb-run’], stdout=subprocess.PIPE).communicate()[0].strip()<br>                        # 确定是否已经安装<br>                        try:<br>                            with open(self.xvfb) as f:<br>                                pass<br>                        except IOError:<br>                            raise IOError(‘No xvfb executable found: “%s”\n’ % self.xvfb)<br>                try:<br>                    with open(self.wkhtmltopdf) as f:<br>                        pass<br>                except IOError:<br>                    raise IOError(‘No wkhtmltopdf executable found: “%s”\n’<br>                                  ‘If this file exists please check that this process can ‘<br>                                  ‘read it. Otherwise please install wkhtmltopdf - ‘<br>                                  ‘<a href="https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf&#39;" target="_blank" rel="noopener">https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf&#39;</a> % self.wkhtmltopdf)<br>        class UbuntuPDFKit(PDFKit):<br>            def <strong>init</strong>(self, url_or_file, type_, options=None, toc=None, cover=None,<br>                         css=None, cover_first=False):<br>                configuration = UbuntuConfiguration()<br>                super(UbuntuPDFKit, self).<strong>init</strong>(url_or_file, type_, options, toc=toc, cover=cover, css=css,<br>                                                   cover_first=cover_first, configuration=configuration)<br>                self.xvfb = self.configuration.xvfb<br>            def _command(self, path=None):<br>                “””<br>                Generator of all command parts<br>                “””<br>                if self.css:<br>                    self._prepend_css(self.css)<br>                yield self.xvfb</p>
+<pre><code>        yield self.wkhtmltopdf
+        for argpart in self._genargs(self.options):
+            if argpart:
+                yield argpart
+
+        if self.cover and self.cover_first:
+            yield &apos;cover&apos;
+            yield self.cover
+        if self.toc:
+            yield &apos;toc&apos;
+            for argpart in self._genargs(self.toc):
+                if argpart:
+                    yield argpart
+
+        if self.cover and not self.cover_first:
+            yield &apos;cover&apos;
+            yield self.cover
+        # If the source is a string then we will pipe it into wkhtmltopdf
+        # If the source is file-like then we will read from it and pipe it in
+        if self.source.isString() or self.source.isFileObj():
+            yield &apos;-&apos;
+        else:
+            if isinstance(self.source.source, basestring):
+                yield self.source.to_s()
+            else:
+                for s in self.source.source:
+                    yield s
+        # If output_path evaluates to False append &apos;-&apos; to end of args
+        # and wkhtmltopdf will pass generated PDF to stdout
+        if path:
+            yield path
+        else:
+            yield &apos;-&apos;
+def xvfb_from_file(input, output_path, options=None, toc=None, cover=None, css=None, cover_first=False):
+    r = UbuntuPDFKit(input, &apos;file&apos;, options=options, toc=toc, cover=cover, css=css, cover_first=cover_first)
+    return r.to_pdf(output_path)
+————————————————
+版权声明：本文为CSDN博主「战渣渣」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/mx472756841/java/article/details/83268921</code></pre><blockquote>
+<p>5 解决中文乱码<br>    1. 安装微软字体 .ttc或.ttf<br>       到/usr/share/fonts下mkdir Winfonts在将字体复制过来<br>       chmod 664 <em>.ttc或</em>.ttf<br>       mkfontscale （创建雅黑字体的fonts.scale文件，它用来控制字体旋转缩放）<br>       sudo mkfontsdir （创建雅黑字体的fonts.dir文件，它用来控制字体粗斜体产生）<br>       sudo fc-cache -fv（建立字体缓存信息，也就是让系统认识雅黑)</p>
 </blockquote>
 
       
@@ -447,8 +469,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/08/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" rel="next" title="markdown基本语法">
-                <i class="fa fa-chevron-left"></i> markdown基本语法
+              <a href="/2020/02/29/mysql%E9%A1%BB%E7%9F%A5/" rel="next" title="MySQL须知">
+                <i class="fa fa-chevron-left"></i> MySQL须知
               </a>
             
           </div>
@@ -456,10 +478,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/21/linux%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/" rel="prev" title="linux部署django项目">
-                linux部署django项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux常用命令1"><span class="nav-number">1.</span> <span class="nav-text">Linux常用命令1</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mkhtmltopdf感想"><span class="nav-number">1.</span> <span class="nav-text">mkhtmltopdf感想</span></a></li></ol></div>
             
 
           </div>

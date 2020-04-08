@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="小仙子">
 <meta property="og:description" content="MySQL须知">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-05T11:27:55.659Z">
+<meta property="og:updated_time" content="2020-04-06T04:52:28.046Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -348,7 +348,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  177 字
+                  250 字
                 </span>
               
 
@@ -389,13 +389,13 @@
 <blockquote>
 </blockquote>
 <blockquote>
-<p>####1 修改密码<br>    1. set password for xxx@host=”xxx”<br>     grant all PRIVILEGES on student.* to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);</p>
+<p>####1 修改密码<br>    1. set password for xxx@host=”xxx”<br>     grant all PRIVILEGES on student.* to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);<br>     在/etc/mysql/mysqld改变bind-address<br>      在/etc/mysql/debian.cnf下查看root密码</p>
 </blockquote>
 <blockquote>
 <p>####2 MySQL-font与MySQL—client版本不匹配(错误代码#1251)<br>    2. ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘password’ PASSWORD EXPIRE NEVER;<br>    ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘你的密码’;<br>    FLUSH PRIVILEGES;</p>
 </blockquote>
 <blockquote>
-<p>####3 远程访问在阿里云的MySQL-server<br>    1. 配置安全组规则(port:3306)<br>    2. <a href="https://www.cnblogs.com/patrickding/p/6435459.html" target="_blank" rel="noopener">开启Mysql 3306端口远程访问</a><br>    在MySQL的MySQL数据库中执行grant all PRIVILEGES on student.<em>(数据库和表(.</em>)) to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);<br>####4 其他<br>    1. Windows初始化 mysqld –initialize –console;<br>    Windows启动/停止MySQL-service net start(stop) mysql ;<br>    复制表 insert into database1(key)  from database2;<br>    查看key desc table;</p>
+<p>####3 远程访问在阿里云的MySQL-server<br>    1. 配置安全组规则(port:3306)<br>    2. <a href="https://www.cnblogs.com/patrickding/p/6435459.html" target="_blank" rel="noopener">开启Mysql 3306端口远程访问</a><br>    在MySQL的MySQL数据库中执行grant all PRIVILEGES on student.<em>(数据库和表(.</em>)) to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);<br>####4 其他<br>    1. Windows 初始化 mysqld –initialize –console;<br>    Windows启动/停止MySQL-service net start(stop) mysql ;<br>    复制表 insert into database1(key)  from database2;<br>    查看key desc table;<br>    2.创建用户<br>     create user ‘新用户名‘@’localhost’ identified by ‘密码’;<br>    //允许所有ip连接（用通配符%表示）<br>    create user ‘新用户名‘@’%’ identified by ‘密码’;<br>    限制 limit<br>    ALTER TABLE <code>table_name</code> MODIFY COLUMN <code>id</code> int NOT NULL AUTO_INCREMENT,ADD PRIMARY KEY(id);</p>
 </blockquote>
 
       
@@ -436,6 +436,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/08/mkhtmltopdf%E6%84%9F%E6%83%B3/" rel="prev" title="mkhtmltopdf感想">
+                mkhtmltopdf感想 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -516,7 +520,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
