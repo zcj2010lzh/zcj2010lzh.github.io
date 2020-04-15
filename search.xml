@@ -83,6 +83,28 @@ def xvfb_from_file(input, output_path, options=None, toc=None, cover=None, css=N
       </tags>
   </entry>
   <entry>
+    <title>阿里云部署项目</title>
+    <url>/2020/02/13/%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E9%A1%BB%E7%9F%A5/</url>
+    <content><![CDATA[<h1 id="阿里云部署项目须知"><a href="#阿里云部署项目须知" class="headerlink" title="阿里云部署项目须知"></a>阿里云部署项目须知</h1><a id="more"></a>
+<blockquote>
+</blockquote>
+<h4 id="无法下载python3-6"><a href="#无法下载python3-6" class="headerlink" title="无法下载python3.6"></a>无法下载python3.6</h4><pre><code>1. sudo add-apt-repository ppa:deadsnakes/ppa     
+2. sudo apt-get update sudo 
+3. apt-get install python3.6
+4. 若上述运行sudo add-apt-repository ppa:deadsnakes/ppa 出现 “bash: 5.add-apt-repository: command not found” 则先运行：
+6. sudo apt-get install -y software-properties-common</code></pre><h4 id="无法进入github"><a href="#无法进入github" class="headerlink" title="无法进入github"></a>无法进入github</h4><pre><code>方案：在C:\Windows\System32\drivers\etc下
+1. 将192.30.253.113 github.com
+192.30.253.118 gist.github.com
+192.30.253.119 gist.github.com
+加入hosts文件</code></pre><h4 id="后台样式消失"><a href="#后台样式消失" class="headerlink" title="后台样式消失"></a>后台样式消失</h4><pre><code>方案:
+1. [后台样式消失解决方案链接](https://blog.csdn.net/qq_42571805/article/details/80862455 &quot;解决方案&quot;)</code></pre><h4 id="向网站发送请求无回应"><a href="#向网站发送请求无回应" class="headerlink" title="向网站发送请求无回应"></a>向网站发送请求无回应</h4><pre><code>方案：在阿里云控制台添加安全组规则
+1. 主要是http 和https
+ 相关链接[添加安全组规则](https://help.aliyun.com/knowledge_detail/40724.html?spm=a2c4g.11186623.6.839.1100734eOhM0sN &quot;添加安全组规则&quot;)</code></pre>]]></content>
+      <tags>
+        <tag>日常学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux部署django项目</title>
     <url>/2019/12/21/linux%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<h1 id="Linux部署Django项目"><a href="#Linux部署Django项目" class="headerlink" title="Linux部署Django项目"></a>Linux部署Django项目</h1><a id="more"></a>
