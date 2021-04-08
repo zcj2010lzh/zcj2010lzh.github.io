@@ -1,63 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>sonoda_aika</title>
+    <url>/2021/04/08/sonoda-aika/</url>
+    <content><![CDATA[<p>爱香</p>
+<a id="more"></a>
+
+<p><img src="/images/sonoda_aika82.jpg" alt="alt 园田小姐姐"></p>
+]]></content>
+      <categories>
+        <category>园田</category>
+      </categories>
+      <tags>
+        <tag>图片</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mkhtmltopdf感想</title>
     <url>/2020/04/08/mkhtmltopdf%E6%84%9F%E6%83%B3/</url>
     <content><![CDATA[<h1 id="mkhtmltopdf感想"><a href="#mkhtmltopdf感想" class="headerlink" title="mkhtmltopdf感想"></a>mkhtmltopdf感想</h1><a id="more"></a>
 <blockquote>
 </blockquote>
-<blockquote>
-<p>1 ####安装mkhtmltopdf<br>    1. pip install mkhtmltopdf<br>        apt-get  install mkhtmltopdf</p>
-</blockquote>
-<blockquote>
-<p>2 ####配置pdfkit<br>    1. config = pdfkit.configuration(wkhtmltopdf=r”/usr/bin”) =&gt;&gt;Pdfkit OSError: No wkhtmltopdf executable found<br>       options={<br>            “encoding”:”UTF-8”,<br>        }</p>
-</blockquote>
-<blockquote>
-<p>3 ####将目标文件移动到/media/summary/pdf下<br>    1. import shutil<br>       impoet media<br>       shutil.move(summary.title+’.pdf’, ‘media/summary/pdf/‘+summary.title+’.pdf’)<br>       summary.file = ‘media/summary/pdf/‘+summary.title+’.pdf’</p>
-</blockquote>
-<p>4 #### 解决Pdfkit OSError:Could not connect to display<br>    1.     apt-get install xvfb<br>           import subprocess<br>        import sys<br>        from pdfkit import PDFKit<br>        try:<br>            # Python 2.x and 3.x support for checking string types<br>            assert basestring<br>        except NameError:<br>            basestring = str<br>        class UbuntuConfiguration(object):<br>            def <strong>init</strong>(self, wkhtmltopdf=’’, xvfb=’’, meta_tag_prefix=’pdfkit-‘):<br>                self.meta_tag_prefix = meta_tag_prefix<br>                self.wkhtmltopdf = wkhtmltopdf<br>                self.xvfb = xvfb<br>                if not self.wkhtmltopdf:<br>                    if sys.platform == ‘win32’:<br>                        self.wkhtmltopdf = subprocess.Popen(<br>                            [‘where’, ‘wkhtmltopdf’], stdout=subprocess.PIPE).communicate()[0].strip()<br>                    else:<br>                        self.wkhtmltopdf = subprocess.Popen(<br>                            [‘which’, ‘wkhtmltopdf’], stdout=subprocess.PIPE).communicate()[0].strip()<br>                if not xvfb:<br>                    # 只针对ubuntu 最简单的解决方案，安装wkhtmltopdf 不足以解决问题时，需要安装xvfb-run来执行<br>                    if sys.platform != ‘win32’:<br>                        self.xvfb = subprocess.Popen(<br>                            [‘which’, ‘xvfb-run’], stdout=subprocess.PIPE).communicate()[0].strip()<br>                        # 确定是否已经安装<br>                        try:<br>                            with open(self.xvfb) as f:<br>                                pass<br>                        except IOError:<br>                            raise IOError(‘No xvfb executable found: “%s”\n’ % self.xvfb)<br>                try:<br>                    with open(self.wkhtmltopdf) as f:<br>                        pass<br>                except IOError:<br>                    raise IOError(‘No wkhtmltopdf executable found: “%s”\n’<br>                                  ‘If this file exists please check that this process can ‘<br>                                  ‘read it. Otherwise please install wkhtmltopdf - ‘<br>                                  ‘<a href="https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf&#39;" target="_blank" rel="noopener">https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf&#39;</a> % self.wkhtmltopdf)<br>        class UbuntuPDFKit(PDFKit):<br>            def <strong>init</strong>(self, url_or_file, type_, options=None, toc=None, cover=None,<br>                         css=None, cover_first=False):<br>                configuration = UbuntuConfiguration()<br>                super(UbuntuPDFKit, self).<strong>init</strong>(url_or_file, type_, options, toc=toc, cover=cover, css=css,<br>                                                   cover_first=cover_first, configuration=configuration)<br>                self.xvfb = self.configuration.xvfb<br>            def _command(self, path=None):<br>                “””<br>                Generator of all command parts<br>                “””<br>                if self.css:<br>                    self._prepend_css(self.css)<br>                yield self.xvfb</p>
-<pre><code>        yield self.wkhtmltopdf
-        for argpart in self._genargs(self.options):
-            if argpart:
-                yield argpart
+<h4 id="1安装mkhtmltopdf"><a href="#1安装mkhtmltopdf" class="headerlink" title="1安装mkhtmltopdf"></a>1安装mkhtmltopdf</h4><pre><code>1. pip install mkhtmltopdf
+    apt-get  install mkhtmltopdf</code></pre><h4 id="2配置pdfkit"><a href="#2配置pdfkit" class="headerlink" title="2配置pdfkit"></a>2配置pdfkit</h4><pre><code>1. config = pdfkit.configuration(wkhtmltopdf=r&quot;/usr/bin&quot;) =&gt;&gt;Pdfkit OSError: No wkhtmltopdf executable found
+   options={
+        &quot;encoding&quot;:&quot;UTF-8&quot;,
+    }</code></pre><h4 id="将目标文件移动到-media-summary-pdf下"><a href="#将目标文件移动到-media-summary-pdf下" class="headerlink" title="将目标文件移动到/media/summary/pdf下"></a>将目标文件移动到/media/summary/pdf下</h4><pre><code>1. import shutil
+   impoet media
+   shutil.move(summary.title+&apos;.pdf&apos;, &apos;media/summary/pdf/&apos;+summary.title+&apos;.pdf&apos;)
+   summary.file = &apos;media/summary/pdf/&apos;+summary.title+&apos;.pdf&apos;</code></pre><h4 id="解决Pdfkit-OSError-Could-not-connect-to-display"><a href="#解决Pdfkit-OSError-Could-not-connect-to-display" class="headerlink" title="解决Pdfkit OSError:Could not connect to display"></a>解决Pdfkit OSError:Could not connect to display</h4><pre><code>1.     apt-get install xvfb
+       import subprocess
+    import sys
+    from pdfkit import PDFKit
+    try:
+        # Python 2.x and 3.x support for checking string types
+        assert basestring
+    except NameError:
+        basestring = str
+    class UbuntuConfiguration(object):
+        def __init__(self, wkhtmltopdf=&apos;&apos;, xvfb=&apos;&apos;, meta_tag_prefix=&apos;pdfkit-&apos;):
+            self.meta_tag_prefix = meta_tag_prefix
+            self.wkhtmltopdf = wkhtmltopdf
+            self.xvfb = xvfb
+            if not self.wkhtmltopdf:
+                if sys.platform == &apos;win32&apos;:
+                    self.wkhtmltopdf = subprocess.Popen(
+                        [&apos;where&apos;, &apos;wkhtmltopdf&apos;], stdout=subprocess.PIPE).communicate()[0].strip()
+                else:
+                    self.wkhtmltopdf = subprocess.Popen(
+                        [&apos;which&apos;, &apos;wkhtmltopdf&apos;], stdout=subprocess.PIPE).communicate()[0].strip()
+            if not xvfb:
+                # 只针对ubuntu 最简单的解决方案，安装wkhtmltopdf 不足以解决问题时，需要安装xvfb-run来执行
+                if sys.platform != &apos;win32&apos;:
+                    self.xvfb = subprocess.Popen(
+                        [&apos;which&apos;, &apos;xvfb-run&apos;], stdout=subprocess.PIPE).communicate()[0].strip()
+                    # 确定是否已经安装
+                    try:
+                        with open(self.xvfb) as f:
+                            pass
+                    except IOError:
+                        raise IOError(&apos;No xvfb executable found: &quot;%s&quot;\n&apos; % self.xvfb)
+            try:
+                with open(self.wkhtmltopdf) as f:
+                    pass
+            except IOError:
+                raise IOError(&apos;No wkhtmltopdf executable found: &quot;%s&quot;\n&apos;
+                              &apos;If this file exists please check that this process can &apos;
+                              &apos;read it. Otherwise please install wkhtmltopdf - &apos;
+                              &apos;https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf&apos; % self.wkhtmltopdf)
+    class UbuntuPDFKit(PDFKit):
+        def __init__(self, url_or_file, type_, options=None, toc=None, cover=None,
+                     css=None, cover_first=False):
+            configuration = UbuntuConfiguration()
+            super(UbuntuPDFKit, self).__init__(url_or_file, type_, options, toc=toc, cover=cover, css=css,
+                                               cover_first=cover_first, configuration=configuration)
+            self.xvfb = self.configuration.xvfb
+        def _command(self, path=None):
+            &quot;&quot;&quot;
+            Generator of all command parts
+            &quot;&quot;&quot;
+            if self.css:
+                self._prepend_css(self.css)
+            yield self.xvfb
 
-        if self.cover and self.cover_first:
-            yield &apos;cover&apos;
-            yield self.cover
-        if self.toc:
-            yield &apos;toc&apos;
-            for argpart in self._genargs(self.toc):
+            yield self.wkhtmltopdf
+            for argpart in self._genargs(self.options):
                 if argpart:
                     yield argpart
 
-        if self.cover and not self.cover_first:
-            yield &apos;cover&apos;
-            yield self.cover
-        # If the source is a string then we will pipe it into wkhtmltopdf
-        # If the source is file-like then we will read from it and pipe it in
-        if self.source.isString() or self.source.isFileObj():
-            yield &apos;-&apos;
-        else:
-            if isinstance(self.source.source, basestring):
-                yield self.source.to_s()
+            if self.cover and self.cover_first:
+                yield &apos;cover&apos;
+                yield self.cover
+            if self.toc:
+                yield &apos;toc&apos;
+                for argpart in self._genargs(self.toc):
+                    if argpart:
+                        yield argpart
+
+            if self.cover and not self.cover_first:
+                yield &apos;cover&apos;
+                yield self.cover
+            # If the source is a string then we will pipe it into wkhtmltopdf
+            # If the source is file-like then we will read from it and pipe it in
+            if self.source.isString() or self.source.isFileObj():
+                yield &apos;-&apos;
             else:
-                for s in self.source.source:
-                    yield s
-        # If output_path evaluates to False append &apos;-&apos; to end of args
-        # and wkhtmltopdf will pass generated PDF to stdout
-        if path:
-            yield path
-        else:
-            yield &apos;-&apos;
-def xvfb_from_file(input, output_path, options=None, toc=None, cover=None, css=None, cover_first=False):
-    r = UbuntuPDFKit(input, &apos;file&apos;, options=options, toc=toc, cover=cover, css=css, cover_first=cover_first)
-    return r.to_pdf(output_path)
-————————————————
-版权声明：本文为CSDN博主「战渣渣」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/mx472756841/java/article/details/83268921</code></pre><blockquote>
-<p>5 解决中文乱码<br>    1. 安装微软字体 .ttc或.ttf<br>       到/usr/share/fonts下mkdir Winfonts在将字体复制过来<br>       chmod 664 <em>.ttc或</em>.ttf<br>       mkfontscale （创建雅黑字体的fonts.scale文件，它用来控制字体旋转缩放）<br>       sudo mkfontsdir （创建雅黑字体的fonts.dir文件，它用来控制字体粗斜体产生）<br>       sudo fc-cache -fv（建立字体缓存信息，也就是让系统认识雅黑)</p>
-</blockquote>
-]]></content>
+                if isinstance(self.source.source, basestring):
+                    yield self.source.to_s()
+                else:
+                    for s in self.source.source:
+                        yield s
+            # If output_path evaluates to False append &apos;-&apos; to end of args
+            # and wkhtmltopdf will pass generated PDF to stdout
+            if path:
+                yield path
+            else:
+                yield &apos;-&apos;
+    def xvfb_from_file(input, output_path, options=None, toc=None, cover=None, css=None, cover_first=False):
+        r = UbuntuPDFKit(input, &apos;file&apos;, options=options, toc=toc, cover=cover, css=css, cover_first=cover_first)
+        return r.to_pdf(output_path)
+    ————————————————
+    版权声明：本文为CSDN博主「战渣渣」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+    原文链接：https://blog.csdn.net/mx472756841/java/article/details/83268921</code></pre><h5 id="解决中文乱码"><a href="#解决中文乱码" class="headerlink" title="解决中文乱码"></a>解决中文乱码</h5><pre><code>1. 安装微软字体 .ttc或.ttf
+   到/usr/share/fonts下mkdir Winfonts在将字体复制过来
+   chmod 664 *.ttc或*.ttf
+   mkfontscale （创建雅黑字体的fonts.scale文件，它用来控制字体旋转缩放）
+   sudo mkfontsdir （创建雅黑字体的fonts.dir文件，它用来控制字体粗斜体产生）
+   sudo fc-cache -fv（建立字体缓存信息，也就是让系统认识雅黑)</code></pre>]]></content>
       <tags>
         <tag>日常学习</tag>
       </tags>
@@ -68,16 +137,27 @@ def xvfb_from_file(input, output_path, options=None, toc=None, cover=None, css=N
     <content><![CDATA[<h1 id="MySQL须知"><a href="#MySQL须知" class="headerlink" title="MySQL须知"></a>MySQL须知</h1><a id="more"></a>
 <blockquote>
 </blockquote>
-<blockquote>
-<p>####1 修改密码<br>    1. set password for xxx@host=”xxx”<br>     grant all PRIVILEGES on student.* to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);<br>     在/etc/mysql/mysqld改变bind-address<br>      在/etc/mysql/debian.cnf下查看root密码</p>
-</blockquote>
-<blockquote>
-<p>####2 MySQL-font与MySQL—client版本不匹配(错误代码#1251)<br>    2. ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘password’ PASSWORD EXPIRE NEVER;<br>    ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘你的密码’;<br>    FLUSH PRIVILEGES;</p>
-</blockquote>
-<blockquote>
-<p>####3 远程访问在阿里云的MySQL-server<br>    1. 配置安全组规则(port:3306)<br>    2. <a href="https://www.cnblogs.com/patrickding/p/6435459.html" target="_blank" rel="noopener">开启Mysql 3306端口远程访问</a><br>    在MySQL的MySQL数据库中执行grant all PRIVILEGES on student.<em>(数据库和表(.</em>)) to jiu@’123.123.123.123’ identified by ‘123456’(远程登陆密码);<br>####4 其他<br>    1. Windows 初始化 mysqld –initialize –console;<br>    Windows启动/停止MySQL-service net start(stop) mysql ;<br>    复制表 insert into database1(key)  from database2;<br>    查看key desc table;<br>    2.创建用户<br>     create user ‘新用户名‘@’localhost’ identified by ‘密码’;<br>    //允许所有ip连接（用通配符%表示）<br>    create user ‘新用户名‘@’%’ identified by ‘密码’;<br>    限制 limit<br>    ALTER TABLE <code>table_name</code> MODIFY COLUMN <code>id</code> int NOT NULL AUTO_INCREMENT,ADD PRIMARY KEY(id);</p>
-</blockquote>
-]]></content>
+<h4 id="1修改密码"><a href="#1修改密码" class="headerlink" title="1修改密码"></a>1修改密码</h4><pre><code>1. set password for xxx@host=&quot;xxx&quot;
+grant all PRIVILEGES on student.* to jiu@&apos;123.123.123.123&apos; identified by &apos;123456&apos;(远程登陆密码); identified by &quot;xx&quot;不再需要
+GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;localhost&apos;
+在/etc/mysql/mysqld改变bind-address
+在/etc/mysql/debian.cnf下查看root密码</code></pre><h4 id="2MySQL-font与MySQL—client版本不匹配-错误代码-1251"><a href="#2MySQL-font与MySQL—client版本不匹配-错误代码-1251" class="headerlink" title="2MySQL-font与MySQL—client版本不匹配(错误代码#1251)"></a>2MySQL-font与MySQL—client版本不匹配(错误代码#1251)</h4><pre><code>2. ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;password&apos; PASSWORD EXPIRE NEVER;
+ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;你的密码&apos;;
+FLUSH PRIVILEGES;</code></pre><h4 id="3远程访问在阿里云的MySQL-server"><a href="#3远程访问在阿里云的MySQL-server" class="headerlink" title="3远程访问在阿里云的MySQL-server"></a>3远程访问在阿里云的MySQL-server</h4><pre><code>1. 配置安全组规则(port:3306)
+2. [开启Mysql 3306端口远程访问](https://www.cnblogs.com/patrickding/p/6435459.html)
+在MySQL的MySQL数据库中执行grant all PRIVILEGES on student.*(数据库和表(.*)) to jiu@&apos;123.123.123.123&apos; identified by &apos;123456&apos;(远程登陆密码);</code></pre><h4 id="4其他"><a href="#4其他" class="headerlink" title="4其他"></a>4其他</h4><pre><code>1. Windows 初始化 mysqld --initialize --console;
+Windows启动/停止MySQL-service net start(stop) mysql ;
+复制表 insert into database1(key)  from database2;
+查看key desc table;
+2.创建用户
+ create user &apos;新用户名&apos;@&apos;localhost&apos; identified by &apos;密码&apos;;
+//允许所有ip连接（用通配符%表示）
+create user &apos;新用户名&apos;@&apos;%&apos; identified by &apos;密码&apos;;
+限制 limit
+ALTER TABLE `table_name` MODIFY COLUMN `id` int NOT NULL AUTO_INCREMENT,ADD PRIMARY KEY(id);
+ SHOW VARIABLES LIKE &apos;validate_password%&apos;; 
+ set global validate_password_policy=LOW; 
+  set global validate_password_length=6;</code></pre>]]></content>
       <tags>
         <tag>日常学习</tag>
       </tags>
@@ -109,19 +189,10 @@ def xvfb_from_file(input, output_path, options=None, toc=None, cover=None, css=N
     <url>/2019/12/21/linux%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<h1 id="Linux部署Django项目"><a href="#Linux部署Django项目" class="headerlink" title="Linux部署Django项目"></a>Linux部署Django项目</h1><a id="more"></a>
 <blockquote>
-<p>####安装python和克隆项目<br>  安装python3 -&gt; apt-get install python3.6(更新apt-get或升级)<br>  安装pip3.6  -&gt; apt-get install python3-pip 然后 pip install –upgrade pip<br>  安装虚拟环境和创建虚拟环境 -&gt; pip install virtualenv  | virtualenv xxx_env//应该需要在普通用户下完成<br>  启动虚拟环境 -&gt; source xxx_env/bin/activate(deactivate) | 以下步骤在virtualenv下完成<br>  安装虚拟环境中的配置 -&gt; pip install django==2.2.7(版本) pip install djangorestframework(一个所需框架)<br>  克隆项目 -&gt; git clone <a href="https://github.com/xxx/xxx(克隆到xxx_env下)" target="_blank" rel="noopener">https://github.com/xxx/xxx(克隆到xxx_env下)</a></p>
 </blockquote>
-<blockquote>
-<p>####安装uwsgi和配置<br>  安装 pip install uwsgi(或先apt-get install libpython3.6-dev)<br>  配置 在克隆的项目下新建一个uwsgi文件(与nginx建立联系)touch xxx.xml<br>     <uwsgi><br>     <socket>127.0.0.1:8997</socket><!-- 内部端口，自定义 --><br>     <chdir>/data/wwwroot/mysite/</chdir><!-- 项目路径 --><br>     <module>mysite.wsgi</module><br>     <processes>4</processes> <!-- 进程数 --><br>     <daemonize>uwsgi.log</daemonize><!-- 日志文件 --><br>     </uwsgi><br>  启动项目中的uwsgi(uwsgi -x xxx.xml)(可先杀死uwsgi)</p>
-</blockquote>
-<blockquote>
-<p>####安装nginx和配置<br>   安装 apt-get intall nginx<br>   配置 cd /etc/nginx/   vi nginx.conf<br>   events {<br>    worker_connections  1024;<br>  }<br>  http {<br>    include       mime.types;<br>    default_type  application/octet-stream;<br>    sendfile        on;<br>    server {<br>      listen       80;<br>      server_name  <a href="http://www.django.cn" target="_blank" rel="noopener">www.django.cn</a>;<br>      charset utf-8;<br>      location / {<br>         include uwsgi_params;<br>         uwsgi_pass 127.0.0.1:8997;<br>         uwsgi_param UWSGI_SCRIPT mysite.wsgi;<br>         uwsgi_param UWSGI_CHDIR /data/wwwroot/mysite/; #项目路径</p>
-</blockquote>
-<pre><code>}
-location /static/ {
-alias /data/wwwroot/mysite/static/; #静态资源路径
-}
-  }</code></pre><p>   }<br>  启动nginx nginx<br>完结</p>
+<h4 id="安装python和克隆项目"><a href="#安装python和克隆项目" class="headerlink" title="安装python和克隆项目"></a>安装python和克隆项目</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">安装python3 -&gt; apt-get install python3.6(更新apt-get或升级)</span></pre></td></tr><tr><td class="code"><pre><span class="line">安装pip3.6  -&gt; apt-get install python3-pip 然后 pip install --upgrade pip</span></pre></td></tr><tr><td class="code"><pre><span class="line">安装虚拟环境和创建虚拟环境 -&gt; pip install virtualenv  | virtualenv xxx_env&#x2F;&#x2F;应该需要在普通用户下完成</span></pre></td></tr><tr><td class="code"><pre><span class="line">启动虚拟环境 -&gt; source xxx_env&#x2F;bin&#x2F;activate(deactivate) | 以下步骤在virtualenv下完成</span></pre></td></tr><tr><td class="code"><pre><span class="line">安装虚拟环境中的配置 -&gt; pip install django&#x3D;&#x3D;2.2.7(版本) pip install djangorestframework(一个所需框架)</span></pre></td></tr><tr><td class="code"><pre><span class="line">克隆项目 -&gt; git clone https:&#x2F;&#x2F;github.com&#x2F;xxx&#x2F;xxx(克隆到xxx_env下)</span></pre></td></tr></table></figure>
+<h4 id="安装uwsgi和配置"><a href="#安装uwsgi和配置" class="headerlink" title="安装uwsgi和配置"></a>安装uwsgi和配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">安装 pip install uwsgi(或先apt-get install libpython3.6-dev)</span></pre></td></tr><tr><td class="code"><pre><span class="line">配置 在克隆的项目下新建一个uwsgi文件(与nginx建立联系)touch xxx.xml</span></pre></td></tr><tr><td class="code"><pre><span class="line">   &lt;uwsgi&gt;   </span></pre></td></tr><tr><td class="code"><pre><span class="line">   &lt;socket&gt;127.0.0.1:8997&lt;&#x2F;socket&gt;&lt;!-- 内部端口，自定义 --&gt; </span></pre></td></tr><tr><td class="code"><pre><span class="line">   &lt;chdir&gt;&#x2F;data&#x2F;wwwroot&#x2F;mysite&#x2F;&lt;&#x2F;chdir&gt;&lt;!-- 项目路径 --&gt;            </span></pre></td></tr><tr><td class="code"><pre><span class="line">   &lt;module&gt;mysite.wsgi&lt;&#x2F;module&gt; </span></pre></td></tr><tr><td class="code"><pre><span class="line">   &lt;processes&gt;4&lt;&#x2F;processes&gt; &lt;!-- 进程数 --&gt;     </span></pre></td></tr><tr><td class="code"><pre><span class="line">   &lt;daemonize&gt;uwsgi.log&lt;&#x2F;daemonize&gt;&lt;!-- 日志文件 --&gt;</span></pre></td></tr><tr><td class="code"><pre><span class="line">   &lt;&#x2F;uwsgi&gt;</span></pre></td></tr><tr><td class="code"><pre><span class="line">启动项目中的uwsgi(uwsgi -x xxx.xml)(可先杀死uwsgi)</span></pre></td></tr></table></figure>
+<h4 id="安装nginx和配置"><a href="#安装nginx和配置" class="headerlink" title="安装nginx和配置"></a>安装nginx和配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> 安装 apt-get intall nginx </span></pre></td></tr><tr><td class="code"><pre><span class="line"> 配置 cd &#x2F;etc&#x2F;nginx&#x2F;   vi nginx.conf</span></pre></td></tr><tr><td class="code"><pre><span class="line"> events &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">  worker_connections  1024;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">http &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">  include       mime.types;</span></pre></td></tr><tr><td class="code"><pre><span class="line">  default_type  application&#x2F;octet-stream;</span></pre></td></tr><tr><td class="code"><pre><span class="line">  sendfile        on;</span></pre></td></tr><tr><td class="code"><pre><span class="line">  server &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    listen       80;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    server_name  www.django.cn;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    charset utf-8;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    location &#x2F; &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">       include uwsgi_params;</span></pre></td></tr><tr><td class="code"><pre><span class="line">       uwsgi_pass 127.0.0.1:8997;</span></pre></td></tr><tr><td class="code"><pre><span class="line">       uwsgi_param UWSGI_SCRIPT mysite.wsgi;</span></pre></td></tr><tr><td class="code"><pre><span class="line">       uwsgi_param UWSGI_CHDIR &#x2F;data&#x2F;wwwroot&#x2F;mysite&#x2F;; #项目路径</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    location &#x2F;static&#x2F; &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    alias &#x2F;data&#x2F;wwwroot&#x2F;mysite&#x2F;static&#x2F;; #静态资源路径</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"> &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">启动nginx nginx</span></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>linux</tag>
@@ -132,15 +203,21 @@ alias /data/wwwroot/mysite/static/; #静态资源路径
     <url>/2019/12/10/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A41/</url>
     <content><![CDATA[<h1 id="Linux常用命令1"><a href="#Linux常用命令1" class="headerlink" title="Linux常用命令1"></a>Linux常用命令1</h1><a id="more"></a>
 <blockquote>
-<p>####find<br>    1. find<br>    find [mtime] n(与n天有关) [user][group][uid][gid] name(与name有关的组和用户) [newer] n  比n更新的文件<br>    与文件权限及名称有关的参数：<br>    -name filename ：找出文件名为filename的文件<br>    -size [+-]SIZE ：找出比SIZE还要大（+）或小（-）的文件<br>    -tpye TYPE ：查找文件的类型为TYPE的文件，TYPE的值主要有：一般文件（f)、设备文件（b、c）、<br>    目录（d）、连接文件（l）、socket（s）、FIFO管道文件（p）；<br>    -perm mode ：查找文件权限刚好等于mode的文件，mode用数字表示，如0755；<br>    -perm -mode ：查找文件权限必须要全部包括mode权限的文件，mode用数字表示<br>    -perm +mode ：查找文件权限包含任一mode的权限的文件，mode用数字表示</p>
 </blockquote>
-<blockquote>
-<p>####ls<br>    1. ls [l] 以列表显示 [r]将排序结果反向  [a A]输出隐藏目录或文件 [t]以时间排序 [–color=?]与颜色相关  </p>
-</blockquote>
-<blockquote>
-<p>####cp<br>    -a ：将文件的特性一起复制<br>    -p ：连同文件的属性一起复制，而非使用默认方式，与-a相似，常用于备份<br>    -i ：若目标文件已经存在时，在覆盖时会先询问操作的进行<br>    -r ：递归持续复制，用于目录的复制行为<br>    -u ：目标文件与源文件有差异时才会复制</p>
-</blockquote>
-]]></content>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><pre><code>1. find
+find [mtime] n(与n天有关) [user][group][uid][gid] name(与name有关的组和用户) [newer] n  比n更新的文件
+与文件权限及名称有关的参数：
+-name filename ：找出文件名为filename的文件
+-size [+-]SIZE ：找出比SIZE还要大（+）或小（-）的文件
+-tpye TYPE ：查找文件的类型为TYPE的文件，TYPE的值主要有：一般文件（f)、设备文件（b、c）、
+目录（d）、连接文件（l）、socket（s）、FIFO管道文件（p）；
+-perm mode ：查找文件权限刚好等于mode的文件，mode用数字表示，如0755；
+-perm -mode ：查找文件权限必须要全部包括mode权限的文件，mode用数字表示
+-perm +mode ：查找文件权限包含任一mode的权限的文件，mode用数字表示</code></pre><h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><pre><code>1. ls [l] 以列表显示 [r]将排序结果反向  [a A]输出隐藏目录或文件 [t]以时间排序 [--color=?]与颜色相关  </code></pre><h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><pre><code>-a ：将文件的特性一起复制
+-p ：连同文件的属性一起复制，而非使用默认方式，与-a相似，常用于备份
+-i ：若目标文件已经存在时，在覆盖时会先询问操作的进行
+-r ：递归持续复制，用于目录的复制行为
+-u ：目标文件与源文件有差异时才会复制</code></pre>]]></content>
       <categories>
         <category>技巧</category>
       </categories>
@@ -165,81 +242,55 @@ alias /data/wwwroot/mysite/static/; #静态资源路径
 有序列标 内容前数字加点
 列表嵌套上一级和下一级敲三个空格
 表格 -->
-<p>1.</p>
+<p>1.<br>    - 1<br>    - 2<br>    - 3<br>2.<br>3.<br>表头|表头|表头<br>—|:–:|—<br>内容|内容|内容<br>内容|内容|内容<br>第二行分割表头和内容。</p>
 <ul>
-<li>1</li>
-<li>2</li>
-<li>3<br>2.<br>3.<table>
+<li>有一个就行，为了对齐，多加了几个<br>文字默认居左</li>
+<li>两边加：表示文字居中</li>
+<li>右边加：表示文字居右<br>注：原生的语法两边都要用 | 包起来。此处省略 –&gt;</li>
+</ul>
+<table>
 <thead>
 <tr>
-<th>&lt;!– 表头</th>
+<th>表头</th>
 <th align="center">表头</th>
-<th align="right">表头</th>
+<th>表头</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>内容</td>
-<td align="center">内容</td>
-<td align="right">内容</td>
+<td>1</td>
+<td align="center">2</td>
+<td>3</td>
 </tr>
 <tr>
-<td>内容</td>
-<td align="center">内容</td>
-<td align="right">内容</td>
-</tr>
-<tr>
-<td>第二行分割表头和内容。</td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>- 有一个就行，为了对齐，多加了几个</td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>文字默认居左</td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>-两边加：表示文字居中</td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>-右边加：表示文字居右</td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>注：原生的语法两边都要用</td>
-<td align="center">包起来。此处省略 –&gt;</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">表头</td>
-<td align="right">表头</td>
-</tr>
-<tr>
-<td></td>
-<td align="center">:–:</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">1</td>
-<td align="right">2</td>
-</tr>
-<tr>
-<td></td>
-<td align="center">a</td>
-<td align="right">b</td>
+<td>a</td>
+<td align="center">b</td>
+<td>c</td>
 </tr>
 </tbody></table>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>header 1</th>
+<th>header 2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>row 1 col 1</td>
+<td>row 1 col 2</td>
+</tr>
+<tr>
+<td>row 2 col 1</td>
+<td>row 2 col 2</td>
+</tr>
+<tr>
+<td><a href="#h">锚点</a></td>
+<td></td>
+</tr>
+<tr>
+<td>#  h</td>
+<td></td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>技巧</category>
