@@ -157,7 +157,17 @@ create user &apos;新用户名&apos;@&apos;%&apos; identified by &apos;密码&ap
 ALTER TABLE `table_name` MODIFY COLUMN `id` int NOT NULL AUTO_INCREMENT,ADD PRIMARY KEY(id);
  SHOW VARIABLES LIKE &apos;validate_password%&apos;; 
  set global validate_password_policy=LOW; 
-  set global validate_password_length=6;</code></pre>]]></content>
+  set global validate_password_length=6;</code></pre><h4 id="5忘记密码"><a href="#5忘记密码" class="headerlink" title="5忘记密码"></a>5忘记密码</h4><p>1.</p>
+<pre><code>net stop mysql
+mysqld --console --skip-grant-tables --shared-memory
+**窗口先不要关闭** </code></pre><p>2.</p>
+<pre><code>5.1 mysql -u root -p 回车，这时让你输入密码，不输入，直接回车
+5.2 use mysql
+5.3 update user set authentication_string=&apos;&apos; where user=&apos;root&apos;;
+5.4 quit</code></pre><p>3.</p>
+<pre><code>net start mysql
+mysql -u root -p 回车，不输入密码，回车
+ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;root2020&apos;;</code></pre>]]></content>
       <tags>
         <tag>日常学习</tag>
       </tags>

@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="小仙子">
 <meta property="og:description" content="MySQL须知">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-09-01T12:50:55.999Z">
+<meta property="og:updated_time" content="2021-04-27T01:28:23.012Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -348,7 +348,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  320 字
+                  415 字
                 </span>
               
 
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -408,7 +408,17 @@ create user &apos;新用户名&apos;@&apos;%&apos; identified by &apos;密码&ap
 ALTER TABLE `table_name` MODIFY COLUMN `id` int NOT NULL AUTO_INCREMENT,ADD PRIMARY KEY(id);
  SHOW VARIABLES LIKE &apos;validate_password%&apos;; 
  set global validate_password_policy=LOW; 
-  set global validate_password_length=6;</code></pre>
+  set global validate_password_length=6;</code></pre><h4 id="5忘记密码"><a href="#5忘记密码" class="headerlink" title="5忘记密码"></a>5忘记密码</h4><p>1.</p>
+<pre><code>net stop mysql
+mysqld --console --skip-grant-tables --shared-memory
+**窗口先不要关闭** </code></pre><p>2.</p>
+<pre><code>5.1 mysql -u root -p 回车，这时让你输入密码，不输入，直接回车
+5.2 use mysql
+5.3 update user set authentication_string=&apos;&apos; where user=&apos;root&apos;;
+5.4 quit</code></pre><p>3.</p>
+<pre><code>net start mysql
+mysql -u root -p 回车，不输入密码，回车
+ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;root2020&apos;;</code></pre>
       
     </div>
     
@@ -586,7 +596,7 @@ ALTER TABLE `table_name` MODIFY COLUMN `id` int NOT NULL AUTO_INCREMENT,ADD PRIM
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL须知"><span class="nav-number">1.</span> <span class="nav-text">MySQL须知</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1修改密码"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1修改密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2MySQL-font与MySQL—client版本不匹配-错误代码-1251"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2MySQL-font与MySQL—client版本不匹配(错误代码#1251)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3远程访问在阿里云的MySQL-server"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3远程访问在阿里云的MySQL-server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4其他"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4其他</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL须知"><span class="nav-number">1.</span> <span class="nav-text">MySQL须知</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1修改密码"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1修改密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2MySQL-font与MySQL—client版本不匹配-错误代码-1251"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2MySQL-font与MySQL—client版本不匹配(错误代码#1251)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3远程访问在阿里云的MySQL-server"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3远程访问在阿里云的MySQL-server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4其他"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5忘记密码"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5忘记密码</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
